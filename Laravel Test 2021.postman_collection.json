@@ -1,0 +1,353 @@
+{
+	"info": {
+		"_postman_id": "99acae50-85dc-41a9-91bd-7b3080c9f3c3",
+		"name": "Laravel Test 2021",
+		"description": "Prueba de habilidades creando APIs REST con Laravel\r\n\r\nKevin Figuera",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "bearer {{token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "kevinalejandro3@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}auth/login",
+							"host": [
+								"{{url}}auth"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "Inicio de Sesión"
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}auth/logout",
+							"host": [
+								"{{url}}auth"
+							],
+							"path": [
+								"logout"
+							]
+						},
+						"description": "Cerrar Sesión"
+					},
+					"response": []
+				},
+				{
+					"name": "Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Kevin Figuera",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "kevinalejandro3@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}auth/signup",
+							"host": [
+								"{{url}}auth"
+							],
+							"path": [
+								"signup"
+							]
+						},
+						"description": "Registro de Usuario"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "Index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}products",
+							"host": [
+								"{{url}}products"
+							]
+						},
+						"description": "Listar Productos    "
+					},
+					"response": []
+				},
+				{
+					"name": "Search by Name",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}products?name=prueba",
+							"host": [
+								"{{url}}products"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "prueba"
+								}
+							]
+						},
+						"description": "Busqueda de productos por nombre"
+					},
+					"response": []
+				},
+				{
+					"name": "Store",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Nombre de prueba",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "Descripcion de Prueba",
+									"type": "text"
+								},
+								{
+									"key": "quantity",
+									"value": "50",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}products",
+							"host": [
+								"{{url}}products"
+							]
+						},
+						"description": "Guardar Productos"
+					},
+					"response": []
+				},
+				{
+					"name": "Buy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "quantity",
+									"value": "5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}products/21/buy",
+							"host": [
+								"{{url}}products"
+							],
+							"path": [
+								"21",
+								"buy"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Compra de un producto"
+					},
+					"response": []
+				},
+				{
+					"name": "Show",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}products/21",
+							"host": [
+								"{{url}}products"
+							],
+							"path": [
+								"21"
+							]
+						},
+						"description": "Ver producto"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "Profile",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}profile",
+							"host": [
+								"{{url}}profile"
+							]
+						},
+						"description": "Datos basicos del usuario\r\nCompras\r\nProductos en venta"
+					},
+					"response": []
+				},
+				{
+					"name": "Purchases",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}profile/purchases",
+							"host": [
+								"{{url}}profile"
+							],
+							"path": [
+								"purchases"
+							]
+						},
+						"description": "Compras del Usuario"
+					},
+					"response": []
+				},
+				{
+					"name": "Products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}profile/products",
+							"host": [
+								"{{url}}profile"
+							],
+							"path": [
+								"products"
+							]
+						},
+						"description": "Productos en venta del usuario"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://127.0.0.1:8000/api/"
+		},
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}
