@@ -70,21 +70,21 @@ class Product extends Model
 
     /**
      * Search products for name
-     * 
+     *
      * Uses 'like' search by name
-     * 
+     *
      * @param $name string to search
      */
     public function scopeName($query, $name)
     {
         if(isset($name)) {
-            return $query->where('name', 'like', "%{$name}");
+            return $query->where('name', 'like', "%{$name}%");
         }
     }
 
     /**
      * Search products in stock
-     * 
+     *
      * only returns products with quantity greater than 0
      */
     public function scopeInStock($query)
