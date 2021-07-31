@@ -30,7 +30,9 @@ Route::group(['prefix' => 'auth'], function () {
 Route::get('products', [ProductController::class, 'index']);
 
 Route::group(['prefix' => 'products', 'middleware' => 'auth:api'], function () {
+    Route::get('{product}', [ProductController::class, 'show']);
     Route::post('', [ProductController::class, 'store']);
+    Route::post('{product}/buy', [ProductController::class, 'buy']);
 });
 
 Route::group(['prefix' => 'profile', 'middleware' => 'auth:api'], function () {
