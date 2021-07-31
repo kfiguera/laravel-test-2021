@@ -21,11 +21,31 @@ class Transaction extends Model
     ];
 
     /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
+
+    /**
+     * The attributes that always be appends.
+     *
+     * @var array
+     */
+    protected $appends = [
+        'product_name',
+        'purchased_at'
+    ];
+
+    /**
      * Product sold
      */
     public function product()
     {
-        return $this->hasOne(Product::class);
+        return $this->hasOne(Product::class,'id','product_id');
     }
 
     /**
@@ -35,4 +55,22 @@ class Transaction extends Model
     {
         return $this->hasOne(Buyer::class);
     }
+
+    /**
+     * Product's name
+     */
+
+    public function getProductNameAttribute()
+    {
+        return $this->product->name;
+    }
+    /**
+     * Product's purchased at
+     */
+
+    public function getPurchasedAtAttribute()
+    {
+        return $this->product->created_at->format('Y-m-d H:i:s');
+    }
+
 }
