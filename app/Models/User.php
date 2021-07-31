@@ -52,6 +52,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(Transaction::class);
     }
+    /**
+     * Quantity of user transactions (purchases)
+     */
+    public function getTransactionsCount()
+    {
+        return $this->transactions()->count();
+    }
 
     /**
      * Products that user sells
@@ -59,5 +66,12 @@ class User extends Authenticatable
     public function products()
     {
         return $this->hasMany(Product::class);
+    }
+    /**
+     * Quantity of products sold by the user
+     */
+    public function getProductsCount()
+    {
+        return $this->products()->count();
     }
 }
