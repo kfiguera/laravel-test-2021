@@ -31,4 +31,11 @@ class ProfileController extends Controller
             PurchasesResource::collection(auth()->user()->transactions)
         );
     }
+
+    public function products(){
+
+        return $this->showOne(
+            auth()->user()->products
+        );
+    }
 }
